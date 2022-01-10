@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ul {
+float: left;
+width: 100%;
+padding: 0;
+margin: 0;
+margin-bottom: 20px;
+list-style: none;
+}
+    li a {
+display: block;
+float: left;
+text-align: center;
+font-size: 1.2em;
+width: 200px;
+text-decoration: none;
+color: aqua;
+background-color: blue;
+padding: 10px 15px;
+margin: 1px 1px 1px 1px;
+border: 1px solid navy;
+border-radius: 3px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 0px 2px 3px gray;
+-moz-box-shadow: 0px 2px 3px gray;
+-webkit-box-shadow: 0px 2px 3px gray;
+}
+    li a:hover {
+color: blue;
+background: aqua;
+border: 1px solid blue;
+/*        po najechaniu myszką zmienia się kolor*/
+}
+    table tr td {
+        border: 1px solid black;
+        text-align: center;
+}
+    footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
+</style>
+<body>
+<section>
+    <nav>
+        <ul>
+            <li><a href="/rooms">Rooms list</a></li>
+            <li><a href="/room/new">Add new room</a></li>
+            <li><a href="/room/reserve/{{room.id}}">Room reservation</a></li>
+
+        </ul>
+    </nav>
+</section>
+<h2>Room name: {{ room.name }}</h2>
+<p>Room capacity: {{ room.room_capacity }}</p>
+<p>Projector availability:
+{% if room.projector %}
+Yes
+{%else %}
+No</p>
+{% endif %}
+<p>Room availability:
+{% if room.reserved %}
+No
+{% else %}
+Yes</p>
+{% endif %}
+<p><h3>Booked reservations:</h3></p>
+{% for reservation in reservations %}
+    <p>{{ reservation.date }} : {{ reservation.comment }}</p>
+{% empty %}
+    <p>No reservations for this room.</p>
+{% endfor %}
+<footer>
+        Autor: Barbara Stepuch-Dola
+<!--		Autor: <address>Jan Kowalski (jan.kowalski@example.com)</address>-->
+<!--		<p>wszelkie prawa zastrzeżone</p>-->
+</footer>
+</body>
+</html>

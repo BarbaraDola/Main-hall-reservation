@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ul {
+float: left;
+width: 100%;
+padding: 0;
+margin: 0;
+margin-bottom: 20px;
+list-style: none;
+}
+    li a {
+display: block;
+float: left;
+text-align: center;
+font-size: 1.2em;
+width: 200px;
+text-decoration: none;
+color: aqua;
+background-color: blue;
+padding: 10px 15px;
+margin: 1px 1px 1px 1px;
+border: 1px solid navy;
+border-radius: 3px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 0px 2px 3px gray;
+-moz-box-shadow: 0px 2px 3px gray;
+-webkit-box-shadow: 0px 2px 3px gray;
+}
+    li a:hover {
+color: blue;
+background: aqua;
+border: 1px solid blue;
+/*        po najechaniu myszką zmienia się kolor*/
+}
+    table tr td {
+        border: 1px solid black;
+        text-align: center;
+}
+    footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
+</style>
+<body>
+<section>
+    <nav>
+        <ul>
+            <li><a href="/rooms">Rooms list</a></li>
+            <li><a href="/room/new">Add new room</a></li>
+<!--            <li><a href="/room/reserve">Rezerwacja sali</a></li>-->
+
+
+        </ul>
+    </nav>
+</section>
+<h2>Lista wszystkich sal:</h2>
+<table>
+    <tr>
+        <th>Nazwa sali</th>
+        <th>Pojemność sali</th>
+        <th>Rzutnik</th>
+        <th>Dostępność sali</th>
+    </tr>
+    {% for room in rooms %}
+    <tr>
+    <td><a href="/room/{{room.id}}">Sala {{ room.name }}</td>
+    <td>{{ room.room_capacity }}</td>
+    {% if room.projector %}
+        <td><a style="color: green">Tak</a></td>
+    {% else %}
+        <td><a style="color: red">Nie</a></td>
+    {% endif %}
+    {% if room.reserved %}
+        <td><a style="color: red">Nie</a></td>
+    {% else %}
+        <td><a style="color: green">Tak</a></td>
+    {% endif %}
+<!--    {% if current_date in reservation_dates %}-->
+<!--        <td><a style="color: red">Nie</a></td>-->
+<!--    {% else %}-->
+<!--        <td><a style="color: green">Tak</a></td>-->
+<!--    {% endif %}-->
+<!--    <td>{{ room.reserved }}</td>-->
+    <td><a href="/room/reserve/{{ room.id }}"><button>Reserve Room</button></a></td>
+    <td><a href="/room/modify/{{ room.id }}"><button>Edit Room</button></a></td>
+    <td><a href="/room/delete/{{ room.id }}"><button>Delete Room</button></a></td>
+
+
+    </tr>
+    {% endfor %}
+    {% csrf_token %}
+</table>
+<footer>
+        Autor: Barbara Stepuch-Dola
+<!--		Autor: <address>Jan Kowalski (jan.kowalski@example.com)</address>-->
+<!--		<p>wszelkie prawa zastrzeżone</p>-->
+</footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main hall reservation</title>
+</head>
+<style>
+    ul {
+float: left;
+width: 100%;
+padding: 0;
+margin: 0;
+margin-bottom: 20px;
+list-style: none;
+}
+    li a {
+display: block;
+float: left;
+text-align: center;
+font-size: 1.2em;
+width: 200px;
+text-decoration: none;
+color: aqua;
+background-color: blue;
+padding: 10px 15px;
+margin: 1px 1px 1px 1px;
+border: 1px solid navy;
+border-radius: 3px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 0px 2px 3px gray;
+-moz-box-shadow: 0px 2px 3px gray;
+-webkit-box-shadow: 0px 2px 3px gray;
+}
+    li a:hover {
+color: blue;
+background: aqua;
+border: 1px solid blue;
+/*        po najechaniu myszką zmienia się kolor*/
+}
+    table tr td {
+        border: 1px solid black;
+        text-align: center;
+}
+    footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
+</style>
+<body>
+<section>
+    <nav>
+        <ul>
+            <li><a href="/rooms">Lista wszystkich sal</a></li>
+            <li><a href="/room/new">Dodaj nową salę</a></li>
+            <li><a href="/room/reserve">Rezerwacja sali</a></li>
+        </ul>
+    </nav>
+</section>
+<footer>
+        Autor: Jan Kowalski
+<!--		Autor: <address>Jan Kowalski (jan.kowalski@example.com)</address>-->
+<!--		<p>wszelkie prawa zastrzeżone</p>-->
+	</footer>
+</body>
+</html>
